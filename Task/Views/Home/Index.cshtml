@@ -1,0 +1,28 @@
+﻿<div ng-controller="HomeController">
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Customers</h2>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat='row in data' ng-class="row.Id == scust ? 'list-group-item-action active' : ''" ng-click="getEvents(row.Id)">{{row.Cin}} - {{row.Name}}</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>Customer's Events</h2>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat='row in events.Events' ng-class="row.Id == sevent ? ' list-group-item-action active' : ''" ng-click="getEventDetails(row.Id)">{{row.Content}}</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h2>Selected Event</h2>
+            <ul class="list-group" ng-if="(event | json) != '{}'">
+                <li class="list-group-item">Content: {{event.Content}}</li>
+                <li class="list-group-item">Date: {{event.EventDateTime}}</li>
+                <li class="list-group-item">Customer: {{event.CustomerName}}</li>
+                <li class="list-group-item">Event Open?: {{event.IsOpen}}</li>
+                <li class="list-group-item"><a ng-click="change(event)" class="btn btn-primary btn-md" href="javascript:;">Change Status</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
